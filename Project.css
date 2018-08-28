@@ -1,4 +1,32 @@
-div, p, #id:first-line{
+div p #first-line{
 	background-color: red;
 	color: yellow
+}
+.active{color: red}
+
+ /* The navbar container */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Navbar links */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Links - change color on hover */
+/*.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}*/
+
+.topnav a:hover{    
+	background-color: green;
+    color: black;
 }
