@@ -1,32 +1,16 @@
-div p #first-line{
-	background-color: red;
-	color: yellow
-}
-.active{color: red}
-
- /* The navbar container */
-.topnav {
-    overflow: hidden;
-    background-color: #333;
+#banner{
+    min-width:1000px;
+    width: 100%;
 }
 
-/* Navbar links */
-.topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+body{
+    background-color: #B10C14;
 }
 
-/* Links - change color on hover */
-/*.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}*/
 
-.topnav a:hover{    
-	background-color: green;
-    color: black;
+.textArea p{
+    width:80%;
+    max-width: 1000px;
+    min-width: 700px;
+    background: #DDC4D7;
 }
