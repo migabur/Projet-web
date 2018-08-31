@@ -1,40 +1,167 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-
+	<title>ProjetWeb Heng Joly</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--test-->
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+ <!-- Bootstrap CSS -->
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-	<script type="text/javascript" src="script.js" defer></script>
-	<meta charset="utf-8">
-	<title>ProjetWeb Heng Joly</title>
-	<link rel="stylesheet" href="Project.css">
+	<link rel="stylesheet" href="Project.css">	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="script.js" defer></script>	
 </head>
+
 <body>
 	<img src="bannière_mario.png" id="banner">
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">WebSiteName</a>
-	    </div>
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="#">Page 1</a></li>
-	      <li><a href="#">Page 2</a></li>
-	      <li><a href="#">Page 3</a></li>
+	      <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+	      <li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Good guys<span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+		      <li><a href="#">Mario</a></li>
+		      <li><a href="#">Luigi</a></li>
+		      <li><a href="#">Princess Toadstool</a></li>
+		      <li><a href="#">Mushroom people</a></li>
+		    </ul>
+	      </li>
+
+		  <li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Bad guys<span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+		      <li><a href="#">Goomba</a></li>
+		      <li><a href="#">Koopa</a></li>
+		      <li><a href="#">Piranha Plant</a></li>
+		      <li><a href="#">Cheep Cheep</a></li>
+		      <li><a href="#">Bloober</a></li>
+		      <li><a href="#">Bill Blaster</a></li>
+		      <li><a href="#">Lakitu</a></li>
+		      <li><a href="#">Spiny</a></li>
+		      <li><a href="#">Buzzy Beetle</a></li>
+		      <li><a href="#">King Koopa</a></li>
+		    </ul>
+	      </li>	 
+
+	      <li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Items<span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+		      <li><a href="#">Gold Coin</a></li>
+		      <li><a href="#">Super Mushroom</a></li>
+		      <li><a href="#">Fire Flower</a></li>
+		      <li><a href="#">Super Star</a></li>
+		      <li><a href="#">1-Up Mushroom</a></li>
+		      <li><a href="#">Flagpole</a></li>
+		    </ul>
+	      </li>
+
+	      <li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Maps<span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+		      <li><a href="#">World 1</a></li>
+		      <li><a href="#">World 2</a></li>
+		      <li><a href="#">World 3</a></li>
+		      <li><a href="#">World 4</a></li>
+		      <li><a href="#">World 5</a></li>
+		      <li><a href="#">World 6</a></li>
+		      <li><a href="#">World 7</a></li>
+		      <li><a href="#">World 8</a></li>
+		    </ul>
+	      </li>
+	    </ul>
+
+	    <ul class="nav navbar-nav navbar-right">
+	    	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Register"><p style="font-size: 14px; padding-top: 5px"><span class="glyphicon glyphicon-user"></span> Register</p></button>
+	    	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Login"><p style="font-size: 14px; padding-top: 5px"><span class="glyphicon glyphicon-log-in"></span> Login</p></button>
 	    </ul>
 	  </div>
 	</nav>
-	<div class="textArea" align="center">
-		<p>On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).
+
+	<div id="Register" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h1 class="modal-title">Create your account</h1>
+				</div>
+				<div class="modal-body">
+					<form action="fichier_où_on_lenvoie">
+						<p>Login</p>
+						<input type="text" name="login">
+						<br>
+						<p>Password</p>
+						<input type="text" name="password">
+						<br>
+						<p>Confirm password</p>
+						<input type="text" name="password2">
+						<br><br>
+						<input type="submit" class="btn btn-default" value="confirm">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="Login" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h1 class="modal-title">Login</h1>
+				</div>
+				<div class="modal-body">
+					<form action="fichier_où_on_lenvoie">
+						<p>Login</p>
+						<input type="text" name="login">
+						<br>
+						<p>Password</p>
+						<input type="text" name="password">
+						<br><br>
+						<input type="submit" class="btn btn-default" value="confirm">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container" align="center">
+		<p><img src="cover_mario.jpg" class="picture" align="right">Mensarum enim voragines et varias voluptatum inlecebras, ne longius progrediar, praetermitto illuc transiturus quod quidam per ampla spatia urbis subversasque silices sine periculi metu properantes equos velut publicos signatis quod dicitur calceis agitant, familiarium agmina tamquam praedatorios globos post terga trahentes ne Sannione quidem, ut ait comicus, domi relicto. quos imitatae matronae complures opertis capitibus et basternis per latera civitatis cuncta discurrunt.
+
+Quare hoc quidem praeceptum, cuiuscumque est, ad tollendam amicitiam valet; illud potius praecipiendum fuit, ut eam diligentiam adhiberemus in amicitiis comparandis, ut ne quando amare inciperemus eum, quem aliquando odisse possemus. Quin etiam si minus felices in diligendo fuissemus, ferendum id Scipio potius quam inimicitiarum tempus cogitandum putabat.
+
+Post quorum necem nihilo lenius ferociens Gallus ut leo cadaveribus pastus multa huius modi scrutabatur. quae singula narrare non refert, me professione modum, quod evitandum est, excedamus.
+
+Saraceni tamen nec amici nobis umquam nec hostes optandi, ultro citroque discursantes quicquid inveniri poterat momento temporis parvi vastabant milvorum rapacium similes, qui si praedam dispexerint celsius, volatu rapiunt celeri, aut nisi impetraverint, non inmorantur.
+
+Denique Antiochensis ordinis vertices sub uno elogio iussit occidi ideo efferatus, quod ei celebrari vilitatem intempestivam urgenti, cum inpenderet inopia, gravius rationabili responderunt; et perissent ad unum ni comes orientis tunc Honoratus fixa constantia restitisset.
+
+Haec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.
+
+Nam quibusdam, quos audio sapientes habitos in Graecia, placuisse opinor mirabilia quaedam (sed nihil est quod illi non persequantur argutiis): partim fugiendas esse nimias amicitias, ne necesse sit unum sollicitum esse pro pluribus; satis superque esse sibi suarum cuique rerum, alienis nimis implicari molestum esse; commodissimum esse quam laxissimas habenas habere amicitiae, quas vel adducas, cum velis, vel remittas; caput enim esse ad beate vivendum securitatem, qua frui non possit animus, si tamquam parturiat unus pro pluribus.
+
+Nam quibusdam, quos audio sapientes habitos in Graecia, placuisse opinor mirabilia quaedam (sed nihil est quod illi non persequantur argutiis): partim fugiendas esse nimias amicitias, ne necesse sit unum sollicitum esse pro pluribus; satis superque esse sibi suarum cuique rerum, alienis nimis implicari molestum esse; commodissimum esse quam laxissimas habenas habere amicitiae, quas vel adducas, cum velis, vel remittas; caput enim esse ad beate vivendum securitatem, qua frui non possit animus, si tamquam parturiat unus pro pluribus.
+
+Haec dum oriens diu perferret, caeli reserato tepore Constantius consulatu suo septies et Caesaris ter egressus Arelate Valentiam petit, in Gundomadum et Vadomarium fratres Alamannorum reges arma moturus, quorum crebris excursibus vastabantur confines limitibus terrae Gallorum.
+
+Isdem diebus Apollinaris Domitiani gener, paulo ante agens palatii Caesaris curam, ad Mesopotamiam missus a socero per militares numeros immodice scrutabatur, an quaedam altiora meditantis iam Galli secreta susceperint scripta, qui conpertis Antiochiae gestis per minorem Armeniam lapsus Constantinopolim petit exindeque per protectores retractus artissime tenebatur.
+
+Sed (saepe enim redeo ad Scipionem, cuius omnis sermo erat de amicitia) querebatur, quod omnibus in rebus homines diligentiores essent; capras et oves quot quisque haberet, dicere posse, amicos quot haberet, non posse dicere et in illis quidem parandis adhibere curam, in amicis eligendis neglegentis esse nec habere quasi signa quaedam et notas, quibus eos qui ad amicitias essent idonei, iudicarent. Sunt igitur firmi et stabiles et constantes eligendi; cuius generis est magna penuria. Et iudicare difficile est sane nisi expertum; experiendum autem est in ipsa amicitia. Ita praecurrit amicitia iudicium tollitque experiendi potestatem.
+
+Accedat huc suavitas quaedam oportet sermonum atque morum, haudquaquam mediocre condimentum amicitiae. Tristitia autem et in omni re severitas habet illa quidem gravitatem, sed amicitia remissior esse debet et liberior et dulcior et ad omnem comitatem facilitatemque proclivior.
+
+Illud tamen te esse admonitum volo, primum ut qualis es talem te esse omnes existiment ut, quantum a rerum turpitudine abes, tantum te a verborum libertate seiungas; deinde ut ea in alterum ne dicas, quae cum tibi falso responsa sint, erubescas. Quis est enim, cui via ista non pateat, qui isti aetati atque etiam isti dignitati non possit quam velit petulanter, etiamsi sine ulla suspicione, at non sine argumento male dicere? Sed istarum partium culpa est eorum, qui te agere voluerunt; laus pudoris tui, quod ea te invitum dicere videbamus, ingenii, quod ornate politeque dixisti.
+
 		</p>
 
 
