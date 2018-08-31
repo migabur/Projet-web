@@ -1,28 +1,27 @@
-const calc = require('./calc')
+const express = require('express')
+const app = express()
 
-const readline = require('readline');
+app.use((request, response, next) => {
+  console.log(request.headers)
+  next()
+})
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+app.use((request, response, next) => {
+  request.chance = Math.random()
+  next()
+})
 
-var first = 0;
+app.get('/', (request, response) => {
+  response.json({
+    chance: request.chance,
+    a:20
+  })
+})
 
-rl.question('first nbr ?', (answer) => {
-	rl.question('2nd nbr', (answer2)=>{
-		console.log(`sum${Number(answer)+Number(answer2)}`)
-		rl.close();
-	})
-});
+app.use((err, request, response, next)=>{
+  console.log('qksjjqsnd')
+  console.log(err)
+  response.status(200).send('smt broke')
+})
 
-
-const numbersToAdd = [
-  3,
-  4,
-  10,
-  2
-]
-
-const result = calc.sum(numbersToAdd)
-//console.log(`The result is: ${result}`)
+app.listen(3000)
