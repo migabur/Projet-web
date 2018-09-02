@@ -1,12 +1,17 @@
 var app = new Vue({
 	el:'#app',
+
 	data:{
-		blabla:'blabla'
+		mainText:'Mensarum enim voragines et vari'
 	},
 	methods: {
 		dostuff:function(){
-			this.blabla='blibli'
+			this.mainText='blibli'
+		},
+		dotruc:function(){
+			
 		}
+
 	}
 
 })

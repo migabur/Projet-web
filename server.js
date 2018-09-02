@@ -6,15 +6,9 @@ const app = express()
 
 app.use(express.static('public'));
 
-app.engine('.html', exphbs({
-  defaultLayout: 'main',
-  extname: '.html',
-  layoutsDir: path.join(__dirname, 'views/layouts')
-}))
-app.set('view engine', '.html')
-app.set('views', path.join(__dirname, 'views'))
-
-
+app.get('/', function(req, res){
+  res.sendFile(path.join(__dirname + '/views/layouts/main.html'))
+})
 const port = 3000
 
 app.listen(port, (err) => {
@@ -26,8 +20,7 @@ app.listen(port, (err) => {
 })
 
 app.get('/', (request, response) => {
-  response.render('home', {
-    name: 'John'
+  response.render('main', {
   })
 })
 
