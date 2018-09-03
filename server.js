@@ -38,9 +38,49 @@ app.post('/users', function (req, res){
 })
 
 
-app.get('/json/:tagId', function(req, res){
-  res.send(req.params.tagId)
-  /*fs.readFile('src/test.json', function(err, data){
-    res.send(data);
-  })*/
+app.get('/changepage/:cat/:name', function(req, res){
+
+  console.log("name "+req.params.name)
+
+  console.log("cat " +req.params.cat)
+  fs.readFile('src/test.json', function(err, data){
+    if(err){
+      return console.log(('error ', err))
+    }
+
+    var js = JSON.parse(data);
+    console.log(js)
+    console.log(js[req.params.cat][req.params.name])
+    res.send(js[req.params.cat][req.params.name]);
+  })
 });
+
+app.get('/editpage', function(req, res){
+  //addElementJSON('Good Guys', 'Luigi', 'This is Luigi', 'source');
+  removeNameJSON('Good Guys', 'Mario')
+})
+
+function addEditNameJSON(cat, name, mainText, mainImage){
+  fs.readFile('src/test.json', function(err, data){
+    var content = {}
+    content[name] = {Text:mainText,image:mainImage};
+    var content = JSON.stringify(content);
+    console.log('parsed '+content)
+    var js = JSON.parse(data)
+    js[cat]=JSON.parse(JSON.stringify(js[cat]).substring(0, JSON.stringify(js[cat]).length - 1)+','+content.substring(1));
+    console.log('after  '+js[cat])
+
+    console.log('after '+ JSON.stringify(js))
+    fs.writeFileSync('src/test.json', JSON.stringify(js));
+
+  })
+}
+
+function removeNameJSON(cat, name){
+  fs.readFile('src/test.json', function(err, data){
+    console.log("ça marche")
+    var js = JSON.parse(data)
+    delete js[cat][name]
+    fs.writeFileSync('src/test.json', JSON.stringify(js));
+  }) 
+}

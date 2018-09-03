@@ -7,23 +7,30 @@ var app = new Vue({
 	methods: {
 
 		dostuff:function(id){
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', '/editpage', true);
+			xhr.send(null);
+			xhr.onreadystatechange = function(){
 
+			}},
+			/*console.log(id)
 			var _this = this;
 			var xhr = new XMLHttpRequest();
+			console.log('/changepage/'+id)
 
-			xhr.open('GET', '/json/'+id, true);
-			console.log("1")
+			xhr.open('GET', '/changepage/'+id, true);
 
 			xhr.send(null)
 			xhr.onreadystatechange = function() {
     		// XMLHttpRequest.DONE === 4
-    		console.log(this.readyState)
 
     		if (this.readyState === XMLHttpRequest.DONE) {
-    			console.log(this.status)
     			if (this.status === 200) {
     				console.log(xhr.getResponseHeader('Content-Type'))
-    				_this.mainText=this.responseText;//JSON.parse(this.responseText).EmployeeId;
+    				var js = JSON.parse(this.responseText)
+    				  console.log(js)
+
+    				_this.mainText=js["Text"];//JSON.parse(this.responseText).EmployeeId;
     			} else {
     				console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
     			}
@@ -33,7 +40,7 @@ var app = new Vue({
 }
 
 
-},
+},*/
 		/*dostuff:function(){
 		var _this = this;
 		this.getJsonObject(function(object){
@@ -59,7 +66,7 @@ var app = new Vue({
 
  			try {
 
- 				cb(JSON.parse(request.responseText));
+ 				cb(request.responseText);
  			}catch(err) {
  				cb(err);
  			}
