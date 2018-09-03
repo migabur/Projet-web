@@ -6,24 +6,24 @@ var app = new Vue({
 	},
 	methods: {
 
-		dostuff:function(){
+		dostuff:function(id){
 
 			var _this = this;
 			var xhr = new XMLHttpRequest();
 
-			xhr.open('GET', '/json', true);
-												console.log("1")
+			xhr.open('GET', '/json/'+id, true);
+			console.log("1")
 
 			xhr.send(null)
 			xhr.onreadystatechange = function() {
     		// XMLHttpRequest.DONE === 4
-    		    			console.log(this.readyState)
+    		console.log(this.readyState)
 
-    				if (this.readyState === XMLHttpRequest.DONE) {
+    		if (this.readyState === XMLHttpRequest.DONE) {
     			console.log(this.status)
     			if (this.status === 200) {
     				console.log(xhr.getResponseHeader('Content-Type'))
-    				_this.mainText=JSON.parse(this.responseText).EmployeeId;
+    				_this.mainText=this.responseText;//JSON.parse(this.responseText).EmployeeId;
     			} else {
     				console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
     			}

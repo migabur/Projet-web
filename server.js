@@ -38,8 +38,9 @@ app.post('/users', function (req, res){
 })
 
 
-app.get('/json', function(req, res){
-  fs.readFile('public/js/test.json', function(err, data){
+app.get('/json/:tagId', function(req, res){
+  res.send(req.params.tagId)
+  /*fs.readFile('src/test.json', function(err, data){
     res.send(data);
-  })
+  })*/
 });
