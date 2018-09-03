@@ -1,6 +1,8 @@
 const path = require('path')
 const express = require('express')
 const exphbs = require('express-handlebars')
+const fs = require('fs');
+
 
 const app = express()
 
@@ -9,6 +11,7 @@ app.use(express.static('public'));
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/views/layouts/main.html'))
 })
+
 const port = 3000
 
 app.listen(port, (err) => {
@@ -33,3 +36,10 @@ app.post('/users', function (req, res){
   })
   res.send('successfully registered')
 })
+
+
+app.get('/json', function(req, res){
+  fs.readFile('public/js/test.json', function(err, data){
+    res.send(data);
+  })
+});
