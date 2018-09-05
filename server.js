@@ -12,7 +12,7 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/views/layouts/main.html'))
 })
 
-const port = 3000
+const port = 8080
 
 app.listen(port, (err) => {
   if (err) {
@@ -23,9 +23,13 @@ app.listen(port, (err) => {
 })
 
 app.get('/', (request, response) => {
-  response.render('main', {
+  response.render('main', {test
   })
 })
+
+app.get('/GoodGuys',function(req,res){
+
+});
 
 const users = []
 app.post('/users', function (req, res){
@@ -42,4 +46,6 @@ app.get('/json', function(req, res){
   fs.readFile('public/js/test.json', function(err, data){
     res.send(data);
   })
+
+app.get('')
 });
