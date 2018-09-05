@@ -2,18 +2,30 @@ var app = new Vue({
 	el:'#app',
 
 	data:{
-		mainText:'Mensarum enim voragines et vari'
+		mainText:'Mensarum enim voragines et vari',
+		GoodGuys:''
+	},
+	created:function(){
+		var jsonFile = getJSONAsString().then()
+		console.log('stuff' +jsonFile)
+		console.log(jsonFile["Good Guys"])
+
+		/*.then(function(data){
+			this.GoodGuys=data["Good Guys"]
+			console.log(GoodGuys)
+		})*/
+
 	},
 	methods: {
 
-		dostuff:function(id){
-			var xhr = new XMLHttpRequest();
+		changePage:function(id){
+			/*var xhr = new XMLHttpRequest();
 			xhr.open('GET', '/editpage', true);
 			xhr.send(null);
 			xhr.onreadystatechange = function(){
 
-			}},
-			/*console.log(id)
+			}},*/
+			console.log(id)
 			var _this = this;
 			var xhr = new XMLHttpRequest();
 			console.log('/changepage/'+id)
@@ -40,7 +52,7 @@ var app = new Vue({
 }
 
 
-},*/
+},
 		/*dostuff:function(){
 		var _this = this;
 		this.getJsonObject(function(object){
@@ -78,3 +90,21 @@ var app = new Vue({
 }
 
 })
+
+async function getJSONAsString(){
+	var xhr = new XMLHttpRequest();
+
+	xhr.onreadystatechange = function(){
+	if (this.readyState === XMLHttpRequest.DONE) {
+    			if (this.status === 200) {
+    				console.log(xhr.getResponseHeader('Content-Type'))
+    				console.log(this.responseText)
+    				return this.responseText;
+    			} else {
+    				console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+    			}
+    		}
+	}
+		xhr.open('GET', '/getJSON', true);
+	xhr.send(null)
+}

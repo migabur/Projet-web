@@ -55,9 +55,27 @@ app.get('/changepage/:cat/:name', function(req, res){
   })
 });
 
-app.get('/editpage', function(req, res){
-  //addElementJSON('Good Guys', 'Luigi', 'This is Luigi', 'source');
-  removeNameJSON('Good Guys', 'Mario')
+app.put('/editpage', function(req, res){
+  addEditNameJSON('Good Guys', 'Luigi', 'This is Luigi', 'source');
+  //removeNameJSON('Good Guys', 'Mario')
+})
+
+app.post('/AddName',function(res, res){
+
+})
+
+
+app.get('/getJSON', function(req, res){
+    fs.readFile('src/test.json', function(err, data){
+    if(err){
+      return console.log(('error ', err))
+    }
+    var json =JSON.parse(data)
+    console.log(json)
+    //res.setHeader('Content-Type', 'application/json')
+
+    res.send(json);
+  })
 })
 
 function addEditNameJSON(cat, name, mainText, mainImage){
