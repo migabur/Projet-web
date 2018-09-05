@@ -25,10 +25,11 @@
 	      <li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Good guys<span class="caret"></span></a>
 	        <ul class="dropdown-menu">
-		      <li><a class="pointer" v-on:click="dostuff">Mario</a></li>
-		      <li><a href="#">Luigi</a></li>
+	        	<template v-for="GoodGuy in GoodGuys"></template> 
+		      <!--<li><a class="pointer" v-on:click="changePage('Good Guys/Mario')">Mario</a></li>
+		      <li><a class="pointer" v-on:click="changePage('Luigi')">Luigi</a></li>
 		      <li><a href="#">Princess Toadstool</a></li>
-		      <li><a href="#">Mushroom people</a></li>
+		      <li><a href="#">Mushroom people</a></li>-->
 		    </ul>
 	      </li>
 

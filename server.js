@@ -12,7 +12,7 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/views/layouts/main.html'))
 })
 
-const port = 8080
+const port = 3000
 
 app.listen(port, (err) => {
   if (err) {
@@ -23,13 +23,9 @@ app.listen(port, (err) => {
 })
 
 app.get('/', (request, response) => {
-  response.render('main', {test
+  response.render('main', {
   })
 })
-
-app.get('/GoodGuys',function(req,res){
-
-});
 
 const users = []
 app.post('/users', function (req, res){
@@ -42,10 +38,67 @@ app.post('/users', function (req, res){
 })
 
 
-app.get('/json', function(req, res){
-  fs.readFile('public/js/test.json', function(err, data){
-    res.send(data);
-  })
+app.get('/changepage/:cat/:name', function(req, res){
 
-app.get('')
+  console.log("name "+req.params.name)
+
+  console.log("cat " +req.params.cat)
+  fs.readFile('src/test.json', function(err, data){
+    if(err){
+      return console.log(('error ', err))
+    }
+
+    var js = JSON.parse(data);
+    console.log(js)
+    console.log(js[req.params.cat][req.params.name])
+    res.send(js[req.params.cat][req.params.name]);
+  })
 });
+
+app.put('/editpage', function(req, res){
+  addEditNameJSON('Good Guys', 'Luigi', 'This is Luigi', 'source');
+  //removeNameJSON('Good Guys', 'Mario')
+})
+
+app.post('/AddName',function(res, res){
+
+})
+
+
+app.get('/getJSON', function(req, res){
+    fs.readFile('src/test.json', function(err, data){
+    if(err){
+      return console.log(('error ', err))
+    }
+    var json =JSON.parse(data)
+    console.log(json)
+    //res.setHeader('Content-Type', 'application/json')
+
+    res.send(json);
+  })
+})
+
+function addEditNameJSON(cat, name, mainText, mainImage){
+  fs.readFile('src/test.json', function(err, data){
+    var content = {}
+    content[name] = {Text:mainText,image:mainImage};
+    var content = JSON.stringify(content);
+    console.log('parsed '+content)
+    var js = JSON.parse(data)
+    js[cat]=JSON.parse(JSON.stringify(js[cat]).substring(0, JSON.stringify(js[cat]).length - 1)+','+content.substring(1));
+    console.log('after  '+js[cat])
+
+    console.log('after '+ JSON.stringify(js))
+    fs.writeFileSync('src/test.json', JSON.stringify(js));
+
+  })
+}
+
+function removeNameJSON(cat, name){
+  fs.readFile('src/test.json', function(err, data){
+    console.log("ça marche")
+    var js = JSON.parse(data)
+    delete js[cat][name]
+    fs.writeFileSync('src/test.json', JSON.stringify(js));
+  }) 
+}

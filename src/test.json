@@ -1,0 +1,14 @@
+{
+  "Bad Guys": {
+    "Gamba": {
+      "Text": "This is a Gamba",
+      "image": "source"
+    }
+  },
+  "Good Guys": {
+    "Mario": {
+      "Text": "This is mario",
+      "image": "source"
+    }
+  }
+}
