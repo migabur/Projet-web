@@ -9,6 +9,10 @@
     "Mario": {
       "Text": "This is mario",
       "image": "source"
+    },
+    "Luigi":{
+      "Text": "This is Luigi",
+      "image":"source"
     }
   }
 }
