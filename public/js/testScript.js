@@ -5,7 +5,9 @@ var app = new Vue({
 		titlePage:'',
 		mainText:'Mensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et vari',
 		GoodGuys:[],
-		cat:''
+		cat:'',
+		userName:'',
+		image:''
 	},
 	mounted:function(){
 		this.getJSONAll()
@@ -61,8 +63,8 @@ var app = new Vue({
     				  var tempString = id.split('/')
     				  console.log("temp string "+id)
     				  tempString=tempString[1]
-    				  cat = id.substring(0,id.indexOf('/'))
-    				  console.log("cat     "+cat)
+    				  _this.cat = id.substring(0,id.indexOf('/'))
+    				  console.log("cat     "+_this.cat)
     				_this.titlePage=tempString
     				_this.mainText=js["Text"];//JSON.parse(this.responseText).EmployeeId;
     			} else {
@@ -75,6 +77,12 @@ var app = new Vue({
 
 
 },
+
+		editPage:function(){
+			this.$http.post('/editPage', {cat: this.cat, titlePage: this.titlePage, textEdit:this.mainText,image:this.image}, function(response) {
+
+			});
+		},
 		/*dostuff:function(){
 		var _this = this;
 		this.getJsonObject(function(object){

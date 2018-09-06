@@ -8,6 +8,7 @@ const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 const port = 3000
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 
@@ -57,6 +58,7 @@ app.get('/changepage/:cat/:name', function(req, res){
 });
 
 app.post('/editPage', function(req, res){
+  console.log('body'+req.body.cat)
   editNameJSON(req.body.cat, req.body.titlePage, req.body.textEdit, req.body.image);
   //removeNameJSON('Good Guys', 'Mario')
 })
@@ -94,13 +96,13 @@ function addNameJSON(cat, name, mainText, mainImage){
 
 function editNameJSON(cat, name, mainText, mainImage){
   fs.readFile('src/test.json', function(err, data){
-    var content = JSON.stringify(content);
-    console.log('parsed '+content)
     var js = JSON.parse(data)
+    console.log('js   '+js)
+    console.log('cat' +cat)
+    console.log('name'+name)
     js[cat][name].Text=mainText;
-    js[cat][name].image=mainImage
+    js[cat][name].image=mainImage;
     console.log('after  '+js[cat])
-
     console.log('after '+ JSON.stringify(js))
     fs.writeFileSync('src/test.json', JSON.stringify(js));
 

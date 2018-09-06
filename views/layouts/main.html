@@ -10,6 +10,8 @@
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/testScript.js" defer></script>	
@@ -146,15 +148,13 @@
 					<h1 class="modal-title">Edit</h1>
 				</div>
 				<div class="modal-body">
-					<form action="/editPage" method="post">
-						<input name="titlePage" type="hidden" v-bind:value="titlePage">
-						<input name="cat" type="hidden" v-bind:value="cat">
+					<form v-on:submit.prevent="editPage">
 
-						<p>Text</p>
-						<textarea class="form-control" rows="10" name="textEdit">{{mainText}} </textarea>
+    					<label for="textEdit">text</label>
+						<textarea class="form-control" rows="10" name="textEdit" v-model="mainText">{{mainText}} </textarea>
 						<br>
-						<p>image</p>
-						<input type="text" name="image">
+    					<label for="image" >image</label>
+						<input type="text" name="image" v-model="image">
 						<br><br>
 						<input type="submit" class="btn btn-default" value="confirm">
 					</form>
@@ -168,7 +168,7 @@
 
 	<div  class="container" align="center">
 		<p><h1>{{titlePage}}</h1></p>
-		<p><img src="assets/cover_mario.jpg" class="picture" align="right">{{mainText}}</p>
+		<p class="preservereturn"><img src="assets/cover_mario.jpg" class="picture" align="right">{{mainText}}</p>
 
 	</div>
 </div>
