@@ -13,7 +13,7 @@ app.use(express.static('public'));
 var users = []
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/views/layouts/main.html'))
+    res.sendFile(path.join(__dirname + '/views/index.html'))
 })
 
 const port = 3000
