@@ -10,7 +10,8 @@ var app = new Vue({
 		image:'',
 		alertMessage:'default message',
 		displayAlert:false,
-		displayLogin:true
+		displayLogin:true,
+		category:[]
 	},
 	mounted:function(){
 		this.getJSONAll()
@@ -24,9 +25,17 @@ var app = new Vue({
 	methods: {
 
 		getJSONAll: function(){
+
 			var _this = this
 			var jsonFile = new Promise((resolve)=>{getJSONAsString(resolve)}).then(function(value){
 			var js = JSON.parse(value)
+			for  (var cat in js)
+			{
+				if(js.hasOwnProperty(cat)){
+					console.log(cat)
+					_this.category.push(cat)
+				}
+			}
 			console.log(js)
 			for  (var gG in js["Good Guys"])
 			{
@@ -40,6 +49,20 @@ var app = new Vue({
 		},
 
 
+		createPage:function(submitEvent){
+			var cate=submitEvent.target.elements.cat.value
+			var name=submitEvent.target.elements.pageName.value
+			var text=submitEvent.target.elements.pageText.value
+			var image=submitEvent.target.elements.image.value
+			console.log('cat   ' +cate+text)
+			this.$http.post('/createPage', {cat: cate, titlePage: name, textEdit:text,image:image}).then(function(response){
+				 this.GoodGuys=[]
+ 		this.getJSONAll();
+				 										this.alertMessage=response.body;
+				this.displayAlert=true;
+			});
+		},
+		
 		changePage:function(id){
 			/*var xhr = new XMLHttpRequest();
 			xhr.open('GET', '/editpage', true);
@@ -129,6 +152,7 @@ var app = new Vue({
  },*/
  deletePage:function(){
  	this.$http.post('/deletePage', {cat : this.cat, titlePage:this.titlePage}).then(function(response){
+ 		this.GoodGuys=[]
  		this.getJSONAll();
  										this.alertMessage=response.body;
 				this.displayAlert=true;

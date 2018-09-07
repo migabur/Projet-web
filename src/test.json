@@ -1,1 +1,28 @@
-{"Bad Guys":{"Gamba":{"Text":"This is a Gamba","image":"source"}},"Good Guys":{}}
+{
+    "Bad Guys":
+    {
+        "Gamba":
+        {
+            "Text": "This is a Gamba",
+            "image": "source"
+        }
+    },
+    "Good Guys":
+    {
+        "Luigi":
+        {
+            "Text": "This is a Gamba",
+            "image": "source"
+        },
+        "Mario":
+        {
+            "Text": "This is mario",
+            "image": "source"
+        },
+        "qsdqs":
+        {
+            "Text": "fqsdfqs",
+            "image": "fqsfqsd"
+        }
+    }
+}

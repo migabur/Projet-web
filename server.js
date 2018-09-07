@@ -10,6 +10,7 @@ app.use(bodyParser.json())
  app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
+
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/views/layouts/main.html'))
 })
@@ -81,6 +82,7 @@ function checkUserInJSONFile(file, userName){
 
 
 
+
 app.post('/login', function(req,res){
   fs.readFile('src/identification.json', function(err, data){
   var userList = JSON.parse(data)
@@ -124,7 +126,9 @@ app.get('/changepage/:cat/:name', function(req, res){
   //removeNameJSON('Good Guys', 'Mario')
 })
 
-app.post('/addPage',function(req, res){
+app.post('/createPage',function(req, res){
+  var message = addPageJSON(req.body.cat, req.body.titlePage, req.body.textEdit, req.body.image);
+  res.send("Created page")
 
 })
 
@@ -164,17 +168,17 @@ function editNameJSON(cat, name, mainText, mainImage){
   })
 }
 
-function addEditNameJSON(cat, name, mainText, mainImage){
+function addPageJSON(cat, name, mainText, mainImage){
   fs.readFile('src/test.json', function(err, data){
-    var content = {}
-    content[name] = {Text:mainText,image:mainImage};
-    var content = JSON.stringify(content);
+        var js = JSON.parse(data)
+    var content  = {Text:mainText,image:mainImage};
+
     console.log('parsed '+content)
-    var js = JSON.parse(data)
+
         console.log('js   '+js)
     console.log('cat' +cat)
    console.log('name'+name)
-    js[cat]=JSON.parse(JSON.stringify(js[cat]).substring(0, JSON.stringify(js[cat]).length - 1)+','+content.substring(1));
+    js[cat][name]=content;
     console.log('after  '+js[cat])
 
     console.log('after '+ JSON.stringify(js))
