@@ -168,6 +168,7 @@
 
     					<label for="PageName">PageName</label>
 						<input type="text" name="pageName">
+						<p></p>
     					<label for="textEdit">Text</label>
 						<textarea class="form-control" rows="10" name="pageText" > </textarea>
 						<br>
@@ -195,11 +196,12 @@
 				<div class="modal-body">
 					<form v-on:submit.prevent="editPage">
 
-    					<label for="textEdit">text</label>
+    					<label for="textEdit">Text</label>
 						<textarea class="form-control" rows="10" name="textEdit" v-model="mainText">{{mainText}} </textarea>
 						<br>
-    					<label for="image" >image</label>
-						<input type="text" name="image" v-model="image">
+    					<label for="image" >Image URL</label>
+						<input v-model="image" type="text" name="image">
+						<img v-bind:src="image" alt="Cannot load image">
 						<br><br>
 						<input type="submit" class="btn btn-default" value="Confirm">
 					</form>
