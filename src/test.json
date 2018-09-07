@@ -5,6 +5,7 @@
         {
             "Text": "This is a Koopa blabla",
             "image": "source"
+
         },
         "Piranha Plant":
         {
@@ -47,7 +48,9 @@
         "Mario":
         {
             "Text": "This is mario",
-            "image": "source"
+            "image": "source",
+            "tips":[{"text":"blabla","image":"https://is1-ssl.mzstatic.com/image/thumb/Purple125/v4/db/9d/a6/db9da66d-14ad-20a4-916b-8934d5531199/AppIcon-1x_U007emarketing-85-220-5.png/246x0w.jpg"},
+                {"text":"blibli", "image":"https://aff5fa4925746bf9c161-fb36f18ca122a30f6899af8eef8fa39b.ssl.cf5.rackcdn.com/images/Masthead_luigi.17345b1513ac044897cfc243542899dce541e8dc.9afde10b.png"}]
         },
         "Princess Toadstool":
         {
