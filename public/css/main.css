@@ -60,3 +60,11 @@ p{
 .pointer {cursor: pointer;}
 
 .preservereturn{white-space: pre-line}
+
+.alertmessage {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        text-align: center;
+        z-index: 99999 ;
+    }

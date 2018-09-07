@@ -1,18 +1,13 @@
 const path = require('path')
 const express = require('express')
-const bodyparser = require('body-parser')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
+
 const fs = require('fs')
-const swal = require('sweetalert2');
-const jsdom = require('jsdom');
-const $ = require('jquery');
-var userList = JSON.parse(fs.readFileSync('users.json', 'utf8'));
-var isUserLoggedIn = false;
 
 const app = express()
-
-app.use(bodyparser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json())
+ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 app.get('/', function(req, res){
@@ -28,7 +23,6 @@ app.listen(port, (err) => {
 
   console.log(`server is listening on ${port}`)
 })
-console.log(userList.users[0].login);
 
 /*app.get('/', (request, response) => {
   response.render('main', {
@@ -47,44 +41,62 @@ app.post('/users', function (req, res){
   res.send('successfully registered')
 })*/
 
-app.post('/users.html', function(req,res){
-  var login = req.body.login;
-  var password = req.body.password;
-  var password2 = req.body.password2;
-  if (password == password2) {
-    existingUser=false;
-    for (var i = userList.users.length - 1; i >= 0; i--) {
-      if(userList.users[i].login==login){
-        existingUser=true;
-      }
-    }
-    if(existingUser){console.log("login already taken, pick another one")}
-    else{
-      var newUser = {
-        "login":login,
-        "password":password
-      }
-      userList.users.push(newUser);
-    }
-  } else {console.log("passwords do not match, try again")}
-  console.log(userList);
-})
+app.post('/createUser', function(req, res) {
+            fs.readFile('src/identification.json', function(err, data) {
+                var file = JSON.parse(data)
+                if (req.body.pwd1 != req.body.pwd2) {
+                    res.send("Password not matching")
+                    return
 
-app.post('/login.html', function(req,res){
-  var login = req.body.login;
-  var password = req.body.password;
-  logMatch=false;
-  for (var i = userList.users.length - 1; i >= 0; i--) {
-    if(userList.users[i].login==login && userList.users[i].password==password){
-      logMatch=true;
+                } else if (checkUserInJSONFile(file, req.body.usr)) {
+                    res.send("User already exist")
+                    return
+                } else {
+
+                    var login = req.body.usr;
+
+                  console.log('LOGIN'+login)
+                                      var password = req.body.pwd1;
+                    var newUser = {
+                        "user": login,
+                        "password": password
+                    }
+                    file.push(newUser)
+
+                    fs.writeFileSync('src/identification.json', JSON.stringify(file));
+                    res.send("Account successfully created")
+                }
+            })
+        }
+        )
+
+function checkUserInJSONFile(file, userName){
+  for (user in file){
+    if (user.user===userName){
+      return false
     }
   }
-  if(logMatch){
-    console.log("login successful")
-    //$(".btn-lg").hide();                      ca c'est le jquery pour cacher les boutons et la fenetre mais ca marche pas
-    //$(".modal").hide();                       jquery a besoin d'un document j'arrive pas le faire
+  return true
+}
+
+
+
+app.post('/login', function(req,res){
+  fs.readFile('src/identification.json', function(err, data){
+  var userList = JSON.parse(data)
+  var login = req.body.login;
+  var password = req.body.password;
+
+  for (var i = userList.length - 1; i >= 0; i--) {
+    console.log(req.body.login)
+    console.log(req.body.password)
+    if(userList[i].user===login && userList[i].password===password){
+      res.send("Logged in")
+      return
+    }
   }
-  else{console.log("login and password do not match, try again")}
+  res.send("Invalid creditential")
+})
 })
 
 
@@ -105,15 +117,21 @@ app.get('/changepage/:cat/:name', function(req, res){
   })
 });
 
-app.put('/editpage', function(req, res){
-  addEditNameJSON('Good Guys', 'Luigi', 'This is Luigi', 'source');
+ app.post('/editPage', function(req, res){
+  console.log('body'+req.body)
+   editNameJSON(req.body.cat, req.body.titlePage, req.body.textEdit, req.body.image);
+   res.send("Edited page")
   //removeNameJSON('Good Guys', 'Mario')
 })
 
-app.post('/AddName',function(res, res){
+app.post('/addPage',function(req, res){
 
 })
 
+app.post('/deletepage', function(req, res){
+  removePageJSON(req.body.cat, req.body.titlePage)
+  res.send("Page deleted")
+})
 
 app.get('/getJSON', function(req, res){
     fs.readFile('src/test.json', function(err, data){
@@ -128,6 +146,24 @@ app.get('/getJSON', function(req, res){
   })
 })
 
+function editNameJSON(cat, name, mainText, mainImage){
+              console.log('cat' +cat)
+
+  fs.readFile('src/test.json', function(err, data){
+    var js = JSON.parse(data)
+        console.log('js   '+js)
+            console.log('cat' +cat)
+    console.log('name'+name)
+    js[cat][name].Text=mainText;
+    js[cat][name].image=mainImage
+    console.log('after  '+js[cat])
+
+   console.log('after '+ JSON.stringify(js))
+    fs.writeFileSync('src/test.json', JSON.stringify(js));
+
+  })
+}
+
 function addEditNameJSON(cat, name, mainText, mainImage){
   fs.readFile('src/test.json', function(err, data){
     var content = {}
@@ -135,6 +171,9 @@ function addEditNameJSON(cat, name, mainText, mainImage){
     var content = JSON.stringify(content);
     console.log('parsed '+content)
     var js = JSON.parse(data)
+        console.log('js   '+js)
+    console.log('cat' +cat)
+   console.log('name'+name)
     js[cat]=JSON.parse(JSON.stringify(js[cat]).substring(0, JSON.stringify(js[cat]).length - 1)+','+content.substring(1));
     console.log('after  '+js[cat])
 
@@ -144,7 +183,7 @@ function addEditNameJSON(cat, name, mainText, mainImage){
   })
 }
 
-function removeNameJSON(cat, name){
+function removePageJSON(cat, name){
   fs.readFile('src/test.json', function(err, data){
     console.log("ça marche")
     var js = JSON.parse(data)

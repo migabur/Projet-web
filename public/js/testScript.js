@@ -7,7 +7,10 @@ var app = new Vue({
 		GoodGuys:[],
 		cat:'',
 		userName:'',
-		image:''
+		image:'',
+		alertMessage:'default message',
+		displayAlert:false,
+		displayLogin:true
 	},
 	mounted:function(){
 		this.getJSONAll()
@@ -35,6 +38,7 @@ var app = new Vue({
 			console.log(_this.GoodGuys)
 		})
 		},
+
 
 		changePage:function(id){
 			/*var xhr = new XMLHttpRequest();
@@ -78,9 +82,37 @@ var app = new Vue({
 
 },
 
-		editPage:function(){
-			this.$http.post('/editPage', {cat: this.cat, titlePage: this.titlePage, textEdit:this.mainText,image:this.image}, function(response) {
+		createAccount:function(submitEvent){
+			var userName=submitEvent.target.elements.login.value
+			var password=submitEvent.target.elements.password.value
+			var password2=submitEvent.target.elements.password2.value
+			this.$http.post('/createUser', {usr:userName, pwd1:password,pwd2:password2}).then(function(response){
+								this.alertMessage=response.body;
+				this.displayAlert=true;
 
+			})
+		},
+		login:function(submitEvent){
+			var usr = submitEvent.target.elements.user.value
+			var pwd = submitEvent.target.elements.password.value
+			this.$http.post('/login', {password: pwd, login: usr}).then(function(response) {
+				this.alertMessage=response.body;
+				this.displayAlert=true;
+				if(response.bodyText==="Logged in"){
+					this.userName=usr
+					this.displayLogin=!(this.displayLogin)
+					console.log('LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOG INNNNNNNNNNNNN')
+				}
+				else{console.log('NOTTTTTTTTTTTTTTTT LOGGGGGGGGGGG INNNNNNNNNNNN')}
+
+			});
+		},
+
+		editPage:function(){
+			console.log('cat   ' +this.cat+this.mainText)
+			this.$http.post('/editPage', {cat: this.cat, titlePage: this.titlePage, textEdit:this.mainText,image:this.image}).then(function(response){
+				 										this.alertMessage=response.body;
+				this.displayAlert=true;
 			});
 		},
 		/*dostuff:function(){
@@ -95,6 +127,13 @@ var app = new Vue({
      });
 
  },*/
+ deletePage:function(){
+ 	this.$http.post('/deletePage', {cat : this.cat, titlePage:this.titlePage}).then(function(response){
+ 		this.getJSONAll();
+ 										this.alertMessage=response.body;
+				this.displayAlert=true;
+ 	})
+ },
 
  getJsonObject: function(cb){
  	var request = new XMLHttpRequest();
