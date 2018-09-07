@@ -1,10 +1,40 @@
 {
     "Bad Guys":
     {
-        "Gamba":
+        "Koopa":
         {
-            "Text": "This is a Gamba",
+            "Text": "This is a Koopa blabla",
             "image": "source"
+        },
+        "Piranha Plant":
+        {
+            "Text": "This is a Piranha plant",
+            "image": "source"
+        },
+        "Cheep Cheep":
+        {
+            "Text": "This is a cheep",
+            "image": "source"
+        },
+        "Bloober":
+        {
+            "Text": "This is a Blooder",
+            "image": "source"
+        },
+        "Bill blaster":
+        {
+            "Text": "This is bill",
+            "image": "source"
+        },
+        "Lakitu":
+        {
+            "Text": "This is a Lakitu",
+            "image": "source"
+        },
+        "sdfsdfsdfsdfsdfsdfsdf":
+        {
+            "Text": "sdcsdf",
+            "image": "cxvw"
         }
     },
     "Good Guys":
@@ -28,6 +58,22 @@
         {
             "Text": "This is Mushroom people",
             "image": "fqsfqsd"
+        }
+    },
+    "Items":
+    {
+        "money":
+        {
+            "Text": "shiny qsdfqsdq",
+            "image": "money"
+        }
+    },
+    "Maps":
+    {
+        "1st":
+        {
+            "Text":"Pretty map",
+            "image":"No image"
         }
     }
 }

@@ -40,7 +40,8 @@
 		  <li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Bad guys<span class="caret"></span></a>
 	        <ul class="dropdown-menu">
-		      <li><a href="#">Goomba</a></li>
+	        	<li v-for="BadGuy in BadGuys"><a  class="pointer" v-on:click="changePage('Bad Guys/' + BadGuy)">{{BadGuy}}</a></li> 
+<!--		      <li><a href="#">Goomba</a></li>
 		      <li><a href="#">Koopa</a></li>
 		      <li><a href="#">Piranha Plant</a></li>
 		      <li><a href="#">Cheep Cheep</a></li>
@@ -49,33 +50,35 @@
 		      <li><a href="#">Lakitu</a></li>
 		      <li><a href="#">Spiny</a></li>
 		      <li><a href="#">Buzzy Beetle</a></li>
-		      <li><a href="#">King Koopa</a></li>
+		      <li><a href="#">King Koopa</a></li>-->
 		    </ul>
 	      </li>	 
 
 	      <li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Items<span class="caret"></span></a>
 	        <ul class="dropdown-menu">
-		      <li><a href="#">Gold Coin</a></li>
+	        <li v-for="Item in Items"><a  class="pointer" v-on:click="changePage('Items/' + Item)">{{Item}}</a></li>
+		      <!--<li><a href="#">Gold Coin</a></li>
 		      <li><a href="#">Super Mushroom</a></li>
 		      <li><a href="#">Fire Flower</a></li>
 		      <li><a href="#">Super Star</a></li>
 		      <li><a href="#">1-Up Mushroom</a></li>
-		      <li><a href="#">Flagpole</a></li>
+		      <li><a href="#">Flagpole</a></li>-->
 		    </ul>
 	      </li>
 
 	      <li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Maps<span class="caret"></span></a>
 	        <ul class="dropdown-menu">
-		      <li><a href="#">World 1</a></li>
+	        <li v-for="Map in Maps"><a  class="pointer" v-on:click="changePage('Maps/' + Map)">{{Map}}</a></li>
+		      <!--<li><a href="#">World 1</a></li>
 		      <li><a href="#">World 2</a></li>
 		      <li><a href="#">World 3</a></li>
 		      <li><a href="#">World 4</a></li>
 		      <li><a href="#">World 5</a></li>
 		      <li><a href="#">World 6</a></li>
 		      <li><a href="#">World 7</a></li>
-		      <li><a href="#">World 8</a></li>
+		      <li><a href="#">World 8</a></li>-->
 		    </ul>
 	      </li>
 	    </ul>

@@ -6,6 +6,8 @@ var app = new Vue({
 		mainText:'Welcome to the website MarioWiki. This wiki aims for the community to share it\'s tips and tricks between them.',
 		GoodGuys:[],
 		BadGuys:[],
+		Items:[],
+		Maps:[],
 		cat:'',
 		userName:'',
 		image:'assets/cover_mario.jpg',
@@ -52,7 +54,36 @@ var app = new Vue({
 					_this.GoodGuys.push(gG)
 				}
 			}
-			console.log(_this.GoodGuys)
+			for  (var bG in js["Bad Guys"])
+			{
+									console.log(bG)
+
+
+					console.log(bG)
+					console.log('BADGUYS')
+					_this.BadGuys.push(bG)
+				
+			}
+			for  (var i in js["Items"])
+			{
+									console.log(i)
+
+
+					console.log(i)
+					console.log('i')
+					_this.Items.push(i)
+				
+			}
+			for  (var map in js["Maps"])
+			{
+									console.log(map)
+
+
+					console.log(map)
+					console.log('m')
+					_this.Maps.push(map)
+				
+			}			console.log('BADGUYS'+js["Bad Guys"].Gamba)
 		})
 		},
 
@@ -65,6 +96,10 @@ var app = new Vue({
 			console.log('cat   ' +cate+text)
 			this.$http.post('/createPage', {cat: cate, titlePage: name, textEdit:text,image:image}).then(function(response){
 				 this.GoodGuys=[]
+				 this.BadGuys=[]
+				 this.category=[]
+				 this.Items=[]
+				 this.Maps=[]
  		this.getJSONAll();
 				 										this.alertMessage=response.body;
 				this.displayAlert=true;
@@ -179,6 +214,11 @@ var app = new Vue({
  deletePage:function(){
  	this.$http.post('/deletePage', {cat : this.cat, titlePage:this.titlePage}).then(function(response){
  		this.GoodGuys=[]
+ 		this.BadGuys=[]
+ 		this.category=[]
+ 		this.Items=[]
+ 						 this.Maps=[]
+
  		this.getJSONAll();
  										this.alertMessage=response.body;
 				this.displayAlert=true;
