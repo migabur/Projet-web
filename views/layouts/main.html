@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  <!-- Bootstrap CSS -->
  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/main.css">	
-	<script src="sweetalert2.all.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/main.css">	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/js/testScript.js" defer></script>	
+	<script type="text/javascript" src="js/testScript.js" defer></script>	
 </head>
 
 <body>
 	<div id="app">
-	<img src="/assets/bannière_mario.png" id="banner">
+	<img src="assets/bannière_mario.png" id="banner">
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <ul class="nav navbar-nav">
@@ -27,11 +27,11 @@
 	      <li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Good guys<span class="caret"></span></a>
 	        <ul class="dropdown-menu">
-	        	<template v-for="GoodGuy in GoodGuys"></template> 
-		      <li><a class="pointer" v-on:click="changePage('Good Guys/Mario')">Mario</a></li>
+	        	<li v-for="GoodGuy in GoodGuys"><a  class="pointer" v-on:click="changePage('Good Guys/' + GoodGuy)">{{GoodGuy}}</a></li> 
+		      <!--<li><a class="pointer" v-on:click="changePage('Good Guys/Mario')">Mario</a></li>
 		      <li><a class="pointer" v-on:click="changePage('Luigi')">Luigi</a></li>
 		      <li><a href="#">Princess Toadstool</a></li>
-		      <li><a href="#">Mushroom people</a></li>
+		      <li><a href="#">Mushroom people</a></li>-->
 		    </ul>
 	      </li>
 
@@ -93,7 +93,7 @@
 					<h1 class="modal-title">Create your account</h1>
 				</div>
 				<div class="modal-body">
-					<form method="post" action="/users.html">
+					<form action="fichier_où_on_lenvoie">
 						<p>Login</p>
 						<input type="text" name="login">
 						<br>
@@ -103,7 +103,7 @@
 						<p>Confirm password</p>
 						<input type="text" name="password2">
 						<br><br>
-						<input type="submit" class="btn btn-default" value="Submit">
+						<input type="submit" class="btn btn-default" value="confirm">
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -121,7 +121,7 @@
 					<h1 class="modal-title">Login</h1>
 				</div>
 				<div class="modal-body">
-					<form method="post" action="/login.html">
+					<form action="fichier_où_on_lenvoie">
 						<p>Login</p>
 						<input type="text" name="login">
 						<br>
@@ -138,8 +138,37 @@
 		</div>
 	</div>
 
+	<button data-spy="affix" data-toggle="modal" data-target="#Edit">edit </button> 
+
+		<div id="Edit" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h1 class="modal-title">Edit</h1>
+				</div>
+				<div class="modal-body">
+					<form v-on:submit.prevent="editPage">
+
+    					<label for="textEdit">text</label>
+						<textarea class="form-control" rows="10" name="textEdit" v-model="mainText">{{mainText}} </textarea>
+						<br>
+    					<label for="image" >image</label>
+						<input type="text" name="image" v-model="image">
+						<br><br>
+						<input type="submit" class="btn btn-default" value="confirm">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div  class="container" align="center">
-		<p><img src="/assets/cover_mario.jpg" class="picture" align="right">{{mainText}}</p>
+		<p><h1>{{titlePage}}</h1></p>
+		<p class="preservereturn"><img src="assets/cover_mario.jpg" class="picture" align="right">{{mainText}}</p>
 
 	</div>
 </div>
