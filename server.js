@@ -1,10 +1,17 @@
 const path = require('path')
 const express = require('express')
+const bodyparser = require('body-parser')
 const exphbs = require('express-handlebars')
-const fs = require('fs');
-
+const fs = require('fs')
+const swal = require('sweetalert2');
+const jsdom = require('jsdom');
+const $ = require('jquery');
+var userList = JSON.parse(fs.readFileSync('users.json', 'utf8'));
+var isUserLoggedIn = false;
 
 const app = express()
+
+app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
@@ -21,13 +28,16 @@ app.listen(port, (err) => {
 
   console.log(`server is listening on ${port}`)
 })
+console.log(userList.users[0].login);
 
-app.get('/', (request, response) => {
+/*app.get('/', (request, response) => {
   response.render('main', {
-  })
-})
+  })        
+})                 a quoi ca sert ca?*/ 
 
-const users = []
+
+
+/*const users = []
 app.post('/users', function (req, res){
   const user = req.body
   users.push({
@@ -35,6 +45,46 @@ app.post('/users', function (req, res){
     age: user.age
   })
   res.send('successfully registered')
+})*/
+
+app.post('/users.html', function(req,res){
+  var login = req.body.login;
+  var password = req.body.password;
+  var password2 = req.body.password2;
+  if (password == password2) {
+    existingUser=false;
+    for (var i = userList.users.length - 1; i >= 0; i--) {
+      if(userList.users[i].login==login){
+        existingUser=true;
+      }
+    }
+    if(existingUser){console.log("login already taken, pick another one")}
+    else{
+      var newUser = {
+        "login":login,
+        "password":password
+      }
+      userList.users.push(newUser);
+    }
+  } else {console.log("passwords do not match, try again")}
+  console.log(userList);
+})
+
+app.post('/login.html', function(req,res){
+  var login = req.body.login;
+  var password = req.body.password;
+  logMatch=false;
+  for (var i = userList.users.length - 1; i >= 0; i--) {
+    if(userList.users[i].login==login && userList.users[i].password==password){
+      logMatch=true;
+    }
+  }
+  if(logMatch){
+    console.log("login successful")
+    //$(".btn-lg").hide();                      ca c'est le jquery pour cacher les boutons et la fenetre mais ca marche pas
+    //$(".modal").hide();                       jquery a besoin d'un document j'arrive pas le faire
+  }
+  else{console.log("login and password do not match, try again")}
 })
 
 
