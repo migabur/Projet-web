@@ -112,7 +112,7 @@
 						<label for="password2">Confirm password</label>
 						<input type="text" name="password2">
 						<br><br>
-						<input type="submit" class="btn btn-default" value="confirm">
+						<input type="submit" class="btn btn-default" value="Confirm">
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -131,13 +131,13 @@
 				</div>
 				<div class="modal-body">
 					<form v-on:submit.prevent="login">
-						<label for="user">user</label>
+						<label for="user">UserName</label>
 						<input type="text" name="user">
 						<br>
 						<label for="password">Password</label>
 						<input type="text" name="password">
 						<br><br>
-						<input type="submit" class="btn btn-default" value="confirm">
+						<input type="submit" class="btn btn-default" value="Confirm">
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -147,9 +147,9 @@
 		</div>
 	</div>
 	<div class="btn-group-vertical" data-spy="affix" >
-	<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#Edit" v-if="loggedin && !onHome">edit </button> 
-	<button type="button" class="btn btn-primary" data-spy="affix" data-toggle="modal" v-if="loggedin && !onHome" v-on:click="deletePage">delete </button> 
-	<button type="button" class="btn btn-primary" data-spy="affix" data-toggle="modal" v-if="loggedin" data-target="#Create">create </button> 
+	<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#Edit" v-if="loggedin && !onHome">Edit Page </button> 
+	<button type="button" class="btn btn-primary" data-spy="affix" data-toggle="modal" v-if="loggedin && !onHome" v-on:click="deletePage">Delete Page </button> 
+	<button type="button" class="btn btn-primary" data-spy="affix" data-toggle="modal" v-if="loggedin" data-target="#Create">Create Page </button> 
 
 	</div>
 		<div id="Create" class="modal fade" role="dialog">
@@ -171,10 +171,11 @@
     					<label for="textEdit">Text</label>
 						<textarea class="form-control" rows="10" name="pageText" > </textarea>
 						<br>
-    					<label for="image" >image</label>
-						<input type="text" name="image">
+    					<label for="image" >Image URL</label>
+						<input v-model="image" type="text" name="image">
+						<img v-bind:src="image" alt="Cannot load image">
 						<br><br>
-						<input type="submit" class="btn btn-default" value="confirm">
+						<input type="submit" class="btn btn-default" value="Confirm">
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -200,7 +201,7 @@
     					<label for="image" >image</label>
 						<input type="text" name="image" v-model="image">
 						<br><br>
-						<input type="submit" class="btn btn-default" value="confirm">
+						<input type="submit" class="btn btn-default" value="Confirm">
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -212,9 +213,12 @@
 
 	<div  class="container" align="center">
 		<p><h1>{{titlePage}}</h1></p>
-		<p class="preservereturn"><img v-bind:src="image" alt="could not load image" class="picture" align="right">{{mainText}}</p>
+		<p class="preservereturn"><img v-bind:src="image" alt="Image URL not working" class="picture" align="right">{{mainText}}</p>
 
 	</div>
+
+
+
 </div>
 
 </body>
