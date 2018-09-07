@@ -10,6 +10,7 @@ app.use(bodyParser.json())
  app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
+var users=[]
 
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/views/layouts/main.html'))
@@ -49,7 +50,7 @@ app.post('/createUser', function(req, res) {
                     res.send("Password not matching")
                     return
 
-                } else if (checkUserInJSONFile(file, req.body.usr)) {
+                } else if (!checkUserInJSONFile(file, req.body.usr)) {
                     res.send("User already exist")
                     return
                 } else {
@@ -73,14 +74,13 @@ app.post('/createUser', function(req, res) {
 
 function checkUserInJSONFile(file, userName){
   for (user in file){
-    if (user.user===userName){
+    console.log(file[user])
+    if (file[user].user===userName){
       return false
     }
   }
   return true
 }
-
-
 
 
 app.post('/login', function(req,res){
@@ -93,6 +93,7 @@ app.post('/login', function(req,res){
     console.log(req.body.login)
     console.log(req.body.password)
     if(userList[i].user===login && userList[i].password===password){
+      users.push(login)
       res.send("Logged in")
       return
     }
@@ -101,6 +102,11 @@ app.post('/login', function(req,res){
 })
 })
 
+app.post('/logout', function(req, res){
+  users.splice(users.indexOf(req.body.user),1)
+  res.send('Logged out')
+
+})
 
 app.get('/changepage/:cat/:name', function(req, res){
 
@@ -114,7 +120,7 @@ app.get('/changepage/:cat/:name', function(req, res){
 
     var js = JSON.parse(data);
     console.log(js)
-    console.log(js[req.params.cat][req.params.name])
+    console.log('to return+ '+js[req.params.cat][req.params.name].image)
     res.send(js[req.params.cat][req.params.name]);
   })
 });

@@ -2,16 +2,24 @@ var app = new Vue({
 	el:'#app',
 
 	data:{
-		titlePage:'',
-		mainText:'Mensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et variMensarum enim voragines et vari',
+		titlePage:'Mario Wiki',
+		mainText:'Welcome to the website MarioWiki. This wiki aims for the community to share it\'s tips and tricks between them.',
 		GoodGuys:[],
+		BadGuys:[],
 		cat:'',
 		userName:'',
-		image:'',
+		image:'assets/cover_mario.jpg',
+		imagealt:'assets/cover_mario.jpg',
 		alertMessage:'default message',
 		displayAlert:false,
 		displayLogin:true,
-		category:[]
+		category:[],
+		loggedin:false,
+		onHome:true,
+
+		homeText:'Welcome to the website MarioWiki. This wiki aims for the community to share it\'s tips and tricks between them.',
+		homeImage:'assets/cover_mario.jpg',
+		homeTitle:'Mario Wiki'
 	},
 	mounted:function(){
 		this.getJSONAll()
@@ -70,7 +78,7 @@ var app = new Vue({
 			xhr.onreadystatechange = function(){
 
 			}},*/
-
+			this.onHome=false
 			console.log(id)
 			var _this = this;
 			var xhr = new XMLHttpRequest();
@@ -81,7 +89,7 @@ var app = new Vue({
 			xhr.send(null)
 			xhr.onreadystatechange = function() {
     		// XMLHttpRequest.DONE === 4
-
+			
     		if (this.readyState === XMLHttpRequest.DONE) {
     			if (this.status === 200) {
     				console.log(xhr.getResponseHeader('Content-Type'))
@@ -93,6 +101,9 @@ var app = new Vue({
     				  _this.cat = id.substring(0,id.indexOf('/'))
     				  console.log("cat     "+_this.cat)
     				_this.titlePage=tempString
+    				_this.image=js.image
+    				console.log('titlePage')
+    				console.log('image                                       IMAGE'+js.image)
     				_this.mainText=js["Text"];//JSON.parse(this.responseText).EmployeeId;
     			} else {
     				console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
@@ -115,6 +126,19 @@ var app = new Vue({
 
 			})
 		},
+
+		logout:function(){
+			this.displayLogin=!(this.displayLogin)
+			this.$http.post('/logout', {usr:this.userName}).then(function(response){
+				this.alertMessage=response.body;
+				this.displayAlert=true;
+				this.userName=""
+				this.loggedin=false
+				console.log("loggedin"+this.loggedin)
+
+			})
+		},
+
 		login:function(submitEvent){
 			var usr = submitEvent.target.elements.user.value
 			var pwd = submitEvent.target.elements.password.value
@@ -125,6 +149,8 @@ var app = new Vue({
 					this.userName=usr
 					this.displayLogin=!(this.displayLogin)
 					console.log('LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOG INNNNNNNNNNNNN')
+									this.loggedin=true
+
 				}
 				else{console.log('NOTTTTTTTTTTTTTTTT LOGGGGGGGGGGG INNNNNNNNNNNN')}
 

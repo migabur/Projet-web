@@ -68,3 +68,5 @@ p{
         text-align: center;
         z-index: 99999 ;
     }
+
+     .textCursor {cursor: text;}

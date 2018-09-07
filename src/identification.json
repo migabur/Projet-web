@@ -1,14 +1,1 @@
-[
-{
-    "user": "sebastien",
-    "password": "password"
-},
-{
-    "user": "joly",
-    "password": "password2"
-},
-{
-    "user": "machin",
-    "password": "ggg"
-}
-]
+[{"user":"sebastien","password":"password"},{"user":"joly","password":"password2"},{"user":"machin","password":"ggg"},{"user":"bidule","password":"ggg"},{"user":"ghjfhgj","password":"ggg"}]

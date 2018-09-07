@@ -12,16 +12,21 @@
         "Luigi":
         {
             "Text": "This is a Gamba",
-            "image": "source"
+            "image": "https://themushroomkingdom.net/board/proxy.php?request=http%3A%2F%2Fgamasutra.com%2Fdb_area%2Fimages%2Fblog%2F190074%2Fmariobroz.jpg&hash=591e3503968a1423bf8415b93060c2c4"
         },
         "Mario":
         {
             "Text": "This is mario",
             "image": "source"
         },
-        "qsdqs":
+        "Princess Toadstool":
         {
-            "Text": "fqsdfqs",
+            "Text": "This is proncess toadstool",
+            "image": "fqsfqsd"
+        },
+        "Mushroom people":
+        {
+            "Text": "This is Mushroom people",
             "image": "fqsfqsd"
         }
     }

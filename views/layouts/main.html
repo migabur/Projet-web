@@ -25,7 +25,7 @@
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <ul class="nav navbar-nav">
-	      <li><a v-on:click="displayAlert ? displayAlert=false : displayAlert=true" class="pointer"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+	      <li><a v-on:click="mainText=homeText; titlePage=homeTitle; image=homeImage; onHome=true" class="pointer"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 	      <li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">Good guys<span class="caret"></span></a>
 	        <ul class="dropdown-menu">
@@ -85,8 +85,8 @@
 	    	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Login"><p style="font-size: 14px; padding-top: 5px"><span class="glyphicon glyphicon-log-in"></span> Login</p></button>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right" v-if="!displayLogin">
-	    	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Register"><p style="font-size: 14px; padding-top: 5px"><span class="glyphicon glyphicon-user"></span> {{userName}}</p></button>
-	    	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Register"><p style="font-size: 14px; padding-top: 5px"><span class="glyphicon glyphicon-log-out"></span>logout </p></button>
+	    	<button type="button" class="btn btn-info btn-lg textCursor" data-toggle="modal" data-target=""><p style="font-size: 14px; padding-top: 5px"><span class="glyphicon glyphicon-user"></span> {{userName}}</p></button>
+	    	<button type="button" class="btn btn-info btn-lg " data-toggle="modal" v-on:click="logout"><p style="font-size: 14px; padding-top: 5px"><span class="glyphicon glyphicon-log-out"></span>logout </p></button>
 	    </ul>
 	  </div>
 	</nav>
@@ -143,10 +143,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="btn-group-vertical" data-spy="affix">
-	<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#Edit">edit </button> 
-	<button type="button" class="btn btn-primary" data-spy="affix" data-toggle="modal" v-on:click="deletePage">delete </button> 
-	<button type="button" class="btn btn-primary" data-spy="affix" data-toggle="modal" data-target="#Create">create </button> 
+	<div class="btn-group-vertical" data-spy="affix" >
+	<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#Edit" v-if="loggedin && !onHome">edit </button> 
+	<button type="button" class="btn btn-primary" data-spy="affix" data-toggle="modal" v-if="loggedin && !onHome" v-on:click="deletePage">delete </button> 
+	<button type="button" class="btn btn-primary" data-spy="affix" data-toggle="modal" v-if="loggedin" data-target="#Create">create </button> 
 
 	</div>
 		<div id="Create" class="modal fade" role="dialog">
@@ -209,7 +209,7 @@
 
 	<div  class="container" align="center">
 		<p><h1>{{titlePage}}</h1></p>
-		<p class="preservereturn"><img src="assets/cover_mario.jpg" class="picture" align="right">{{mainText}}</p>
+		<p class="preservereturn"><img v-bind:src="image" alt="could not load image" class="picture" align="right">{{mainText}}</p>
 
 	</div>
 </div>
